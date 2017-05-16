@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pqrs_reporting_web.iml" filepath="$PROJECT_DIR$/.idea/modules/pqrs_reporting_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pqrs_reporting_web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pqrs_reporting_web_main.iml" group="pqrs_reporting_web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pqrs_reporting_web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pqrs_reporting_web_test.iml" group="pqrs_reporting_web" />
+    </modules>
+  </component>
+</project>
