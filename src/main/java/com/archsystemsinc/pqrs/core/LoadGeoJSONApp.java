@@ -53,7 +53,7 @@ public class LoadGeoJSONApp {
 
                 stateGeoJsonRepository.save(stateGeoJson);
 
-            }
+            } 
 
         }catch(Exception e){
             e.printStackTrace();
