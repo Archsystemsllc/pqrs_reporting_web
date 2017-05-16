@@ -25,7 +25,7 @@ public class LoadGeoJSONApp {
 
     private void storeStateGeometry() {
 
-        InputStream inStream = null;
+        InputStream inStream = null; 
         BufferedInputStream bis = null;
         try {
             // open input stream test.txt for reading purpose
