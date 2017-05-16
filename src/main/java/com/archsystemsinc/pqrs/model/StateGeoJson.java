@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "STATE_GEO_JSON")
-public class StateGeoJson {
+public class StateGeoJson { 
 
     @Column(name = "STATE_GEO_JSON_ID")
     private String Id;
