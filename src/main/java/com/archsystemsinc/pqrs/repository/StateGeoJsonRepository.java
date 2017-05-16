@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by MurugarajKandaswam on 5/12/2017.
  */
-public interface StateGeoJsonRepository extends CrudRepository<StateGeoJson, Integer>{
+public interface StateGeoJsonRepository extends CrudRepository<StateGeoJson, Integer>{ 
 
 
 }
