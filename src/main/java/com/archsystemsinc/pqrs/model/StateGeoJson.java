@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "STATE_GEO_JSON")
 public class StateGeoJson { 
 
+	@javax.persistence.Id
     @Column(name = "STATE_GEO_JSON_ID")
     private String Id;
 

@@ -1,27 +1,41 @@
-group 'com.archsystemsinc.pqrs'
-version '1.0-SNAPSHOT'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
-sourceCompatibility = 1.8
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.5'
+jar {
+    baseName = 'gs-serving-web-content'
+    version =  '0.1.0'
 }
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    
-    compile group: 'de.grundid.opendatalab', name: 'geojson-jackson', version: '1.0'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
-    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2'
-    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.3.RELEASE'
-    compile group: 'org.springframework', name: 'spring-core', version: '3.2.2.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version: '3.2.2.RELEASE'
-    
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
+    compile group: 'de.grundid.opendatalab', name: 'geojson-jackson', version: '1.8'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa'
+    compile group: 'com.google.guava', name: 'guava', version: '22.0-rc1'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.0.Final'
+    compile group: 'cz.jirutka.rsql', name: 'rsql-parser', version: '2.1.0'
+    compile group: 'mysql', name: 'mysql-connector-java'
+    compile group: 'org.hibernate', name: 'hibernate-core'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager'
+    compile group: 'org.aspectj', name: 'aspectjtools'
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework:spring-test:4.3.8.RELEASE")
 }
