@@ -1,9 +1,17 @@
 package com.archsystemsinc.pqrs.model;
 
 import org.geojson.Geometry;
+import org.geojson.Point;
+import org.hibernate.annotations.Type;
+
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -11,23 +19,25 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "STATE_GEO_JSON")
-public class StateGeoJson { 
-
-	@javax.persistence.Id
-    @Column(name = "STATE_GEO_JSON_ID")
+public class StateGeoJson {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "STATE_GEO_JSON_ID")
     private String Id;
 
     @Column(name = "STATE_NAME")
     private String stateName;
+    
+    @Lob
+    @Column(name = "STATE_GEO_JSON_OBJECT")
+    private Blob stateGeoJSON;
 
-    @Column(name = "STATE_GEOMETRY")
-    private Geometry stateGeometry;
-
-    public StateGeoJson(String stateName, Geometry stateGeometry) {
-        this.stateName = stateName;
-        this.stateGeometry = stateGeometry;
+    public StateGeoJson(String stateName, Blob stateGeoJSON) {
+    	this.stateName = stateName;
+    	this.stateGeoJSON = stateGeoJSON;
     }
-
+    
     public String getId() {
         return Id;
     }
@@ -44,11 +54,13 @@ public class StateGeoJson {
         this.stateName = stateName;
     }
 
-    public Geometry getStateGeometry() {
-        return stateGeometry;
-    }
+	public Blob getStateGeoJSON() {
+		return stateGeoJSON;
+	}
 
-    public void setStateGeometry(Geometry stateGeometry) {
-        this.stateGeometry = stateGeometry;
-    }
+	public void setStateGeoJSON(Blob stateGeoJSON) {
+		this.stateGeoJSON = stateGeoJSON;
+	}
+
+    
 }
