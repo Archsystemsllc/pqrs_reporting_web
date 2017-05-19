@@ -29,7 +29,7 @@ public class StateGeoJson {
     @Column(name = "STATE_GEO_JSON_OBJECT")
     private Blob stateGeoJSON;
 
-    public StateGeoJson() {}
+    public StateGeoJson() {} 
     
     public StateGeoJson(String stateName, Blob stateGeoJSON) {
     	this.stateName = stateName;
