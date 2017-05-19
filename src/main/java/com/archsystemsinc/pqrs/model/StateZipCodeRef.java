@@ -31,7 +31,7 @@ public class StateZipCodeRef {
 	@Column(name = "COUNTY")
 	private String county;
 
-	public StateZipCodeRef(){}
+	public StateZipCodeRef(){} 
 	
 	public StateZipCodeRef(String stateName, String stateCode, String zipCode, String city, String county){
 		this.stateName = stateName;
