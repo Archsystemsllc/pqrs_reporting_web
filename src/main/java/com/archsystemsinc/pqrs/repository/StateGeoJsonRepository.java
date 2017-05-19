@@ -1,6 +1,7 @@
 package com.archsystemsinc.pqrs.repository;
 
 import com.archsystemsinc.pqrs.model.StateGeoJson;
+
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -8,5 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface StateGeoJsonRepository extends CrudRepository<StateGeoJson, Integer>{ 
 
-
+	StateGeoJson findByStateName(final String stateName);
+	
 }
