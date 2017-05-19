@@ -12,8 +12,8 @@ public class Pchpsa {
   //  @Id
     private String id;
 
-    String zipCode;
-    String state;
+    private String zipCode;
+    private String state;
 
     public Pchpsa(String zipCode, String state) {this.zipCode = zipCode; this.state = state;}
 

@@ -1,9 +1,5 @@
 package com.archsystemsinc.pqrs.model;
 
-import org.geojson.Geometry;
-import org.geojson.Point;
-import org.hibernate.annotations.Type;
-
 import java.sql.Blob;
 
 import javax.persistence.Column;
@@ -33,6 +29,8 @@ public class StateGeoJson {
     @Column(name = "STATE_GEO_JSON_OBJECT")
     private Blob stateGeoJSON;
 
+    public StateGeoJson() {}
+    
     public StateGeoJson(String stateName, Blob stateGeoJSON) {
     	this.stateName = stateName;
     	this.stateGeoJSON = stateGeoJSON;
