@@ -36,6 +36,9 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-core'
     compile group: 'org.hibernate', name: 'hibernate-entitymanager'
     compile group: 'org.aspectj', name: 'aspectjtools'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.16'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.16'
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("org.springframework:spring-test:4.3.8.RELEASE")
+    
 }
