@@ -8,6 +8,8 @@ import java.util.List;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.Geometry;
+import org.geojson.LngLatAlt;
+import org.geojson.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.archsystemsinc.pqrs.model.StateGeoJson;
@@ -23,14 +25,14 @@ public class LoadGeoJSONApp {
     @Autowired
     StateGeoJsonRepository stateGeoJsonRepository;
 
-    private void storeStateGeometry() {
+    public void storeStateGeometry() {
 
         InputStream inStream = null; 
         BufferedInputStream bis = null;
         try {
             // open input stream test.txt for reading purpose
             //inStream = new FileInputStream("state.geo.json");
-            inStream = LoadGeoJSONApp.class.getClassLoader().getResourceAsStream("state.geo.json");
+            inStream = LoadGeoJSONApp.class.getClassLoader().getResourceAsStream("2state.geo.json");
             // input stream is converted to buffered input stream
             bis = new BufferedInputStream(inStream);
             FeatureCollection featureCollection =  new ObjectMapper().readValue(bis, FeatureCollection.class);
@@ -49,9 +51,40 @@ public class LoadGeoJSONApp {
                 Geometry stateGeometry = (Geometry) feature.getGeometry();
                 System.out.println("feature.getGeometry()::"+stateGeometry.toString());
 
-                stateGeoJson = new StateGeoJson(stateName, stateGeometry);
+                LngLatAlt latAlt = new LngLatAlt();
+                
+                List<Object> coordinates = stateGeometry.getCoordinates();
+                System.out.println("geometryList.size()::"+coordinates.size());
+                
+                Object lngLatAlts = coordinates.get(0);
+                
+                System.out.println("Object Type::"+lngLatAlts.getClass());
+                System.out.println("lngLatAlts::"+lngLatAlts.toString());
+                
+                ArrayList<LngLatAlt> lngLatAltList = null;
+                
+                if (lngLatAlts instanceof java.util.ArrayList) {
+                	lngLatAltList = new ArrayList<LngLatAlt>();
+                	
+                	lngLatAltList = (java.util.ArrayList<LngLatAlt>) lngLatAlts;
+                }
+                
+                System.out.println("lngLatAltList::Size-->"+lngLatAltList.size());
+                
+                Point point  = null;
+                
+                for (LngLatAlt lngLatAlt: lngLatAltList ) {
+                	System.out.println("LngLatAlt::"+lngLatAlt.toString());
 
-                stateGeoJsonRepository.save(stateGeoJson);
+                	lngLatAlt.getLatitude();
+                	
+                	point = new Point(lngLatAlt);
+                	
+                	//stateGeoJson = new StateGeoJson(stateName, point);
+                	
+                	stateGeoJsonRepository.save(stateGeoJson);
+                	
+                }
 
             } 
 
@@ -64,6 +97,6 @@ public class LoadGeoJSONApp {
 
         new LoadGeoJSONApp().storeStateGeometry();
 
-    }
+    }   
 
 }
