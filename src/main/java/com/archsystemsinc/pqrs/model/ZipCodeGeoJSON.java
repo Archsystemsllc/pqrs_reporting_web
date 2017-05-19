@@ -27,7 +27,7 @@ public class ZipCodeGeoJSON {
     private String Id;
 
     @Column(name = "ZIP_CODE")
-    private String zipCode;
+    private String zipCode; 
     
     @Lob
     @Column(name = "ZIP_CODE_GEO_JSON_OBJECT")
