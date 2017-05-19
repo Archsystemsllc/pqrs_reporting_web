@@ -24,8 +24,8 @@ import com.archsystemsinc.pqrs.utility.ReadExcel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class })
-//@Transactional
-//@TransactionConfiguration
+@Transactional
+@TransactionConfiguration
 public class LoadStateZipCodeRefTest {
 
     @Autowired
