@@ -2,6 +2,7 @@ package com.archsystemsinc.pqrs.utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import com.archsystemsinc.pqrs.model.annotation.ZAxis;
 
 public class ApplicationUtils {
 
+	static List<String> colors = new ArrayList<String>(Arrays.asList("blue", "red", "green", "yellow"));
 	public static BarChartData getBarChartData(List<?> iCharts, Class<?> clazz) throws IllegalArgumentException, IllegalAccessException {
     	Field xAxisField = null;
     	Field yAxisField = null;
@@ -44,10 +46,11 @@ public class ApplicationUtils {
     	}
     	
     	List<Dataset> datasets = new ArrayList();
+    	int i = 0;
     	for(Object uniqueZAxisValue: uniqueZAxisValues) {
     		Dataset dataset = new Dataset();
     		dataset.setLabel(uniqueZAxisValue.toString());
-    		dataset.setBackgroundColor("");
+    		dataset.setBackgroundColor(colors.get(i)); i++;
     		List<Object> objects = new ArrayList();
     		for(Object uniqueXAxisValue: uniqueXAxisValues) {
     			objects.add(map.get(uniqueXAxisValue.toString()+uniqueZAxisValue.toString()));
