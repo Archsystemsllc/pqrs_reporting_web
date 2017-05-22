@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="BY_OY3_EP")
-public class EPCount {
+@Table(name="BY_OY3_EP_STATE")
+public class EPStateCount {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="zip_code")
-	private String zipCode;
+	@Column(name="state_code")
+	private String stateCode;
 	
 	@Column(name="count_of_eps")
 	private Integer numberOfEPs;
@@ -31,12 +31,12 @@ public class EPCount {
 		this.id = id;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getStateCode() {
+		return stateCode;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setStateCode(String stateCode) {
+		this.stateCode = stateCode;
 	}
 
 	public Integer getNumberOfEPs() {

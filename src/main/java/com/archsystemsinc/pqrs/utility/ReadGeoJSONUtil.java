@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import org.geojson.GeoJsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.archsystemsinc.pqrs.model.StateGeoJson;
 import com.archsystemsinc.pqrs.model.ZipCodeGeoJSON;
@@ -11,6 +12,7 @@ import com.archsystemsinc.pqrs.repository.StateGeoJsonRepository;
 import com.archsystemsinc.pqrs.repository.ZipCodeGeoJsonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Component
 public class ReadGeoJSONUtil {
 
 	@Autowired
@@ -25,11 +27,11 @@ public class ReadGeoJSONUtil {
     		StateGeoJson stateGeoJSON = stateGeoJsonRepository.findByStateName(stateName);
     		InputStream inputStream = stateGeoJSON.getStateGeoJSON().getBinaryStream();
     		String geoJSONString = CommonUtil.getStringFromInputStream(inputStream);
-    		System.out.println("geoJSON(state:"+stateName+")::String-->"+geoJSONString);
+//    		System.out.println("geoJSON(state:"+stateName+")::String-->"+geoJSONString);
     		
     		geoJsonObject = new ObjectMapper().readValue(geoJSONString, GeoJsonObject.class);
     	} catch(Exception e) {
-    		e.printStackTrace();
+//    		e.printStackTrace();
     	}
     	return geoJsonObject;
 		
@@ -41,15 +43,16 @@ public class ReadGeoJSONUtil {
     		ZipCodeGeoJSON zipCodeGeoJSON = zipCodeGeoJsonRepository.findByZipCode(zipCode);
     		InputStream inputStream = zipCodeGeoJSON.getZipCodeGeoJSON().getBinaryStream();
     		String geoJSONString = CommonUtil.getStringFromInputStream(inputStream);
-    		System.out.println("geoJSON(ZipCode:"+zipCode+")::String-->"+geoJSONString);
+//    		System.out.println("geoJSON(ZipCode:"+zipCode+")::String-->"+geoJSONString);
     		
     		geoJsonObject = new ObjectMapper().readValue(geoJSONString, GeoJsonObject.class);
     	} catch(Exception e) {
-    		e.printStackTrace();
+//    		e.printStackTrace();
     	}
     	return geoJsonObject;
 		
 	}
 
+	
 	
 }

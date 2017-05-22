@@ -18,6 +18,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
 import com.google.common.base.Preconditions;
 
 @Configuration
@@ -72,6 +74,13 @@ public class PersistenceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
+    @Bean ServletContextTemplateResolver servletTemplateResolver() {
+    	ServletContextTemplateResolver servletTemplateResolver = new ServletContextTemplateResolver();
+    	servletTemplateResolver.setTemplateMode("LEGACYHTML5");
+    	servletTemplateResolver.setCacheable(false);
+    	return servletTemplateResolver;
+    }
+    
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
