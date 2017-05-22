@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	
-	<title>Choropleth Tutorial - Leaflet</title>
+	<title>PQRS Maps</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
 
 <div id='map'></div>
 
-<script type="text/javascript" th:src="http://localhost:8080/maps/dataset/ByOy3EpState?search=areaType==URBAN"></script>
+<script type="text/javascript" th:src="@{/maps/states(search=${filter}, dataset=${dataset})}"></script>
 
 <script type="text/javascript">
 

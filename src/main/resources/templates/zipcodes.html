@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	
 	<title>Map View - PQRS</title>
@@ -28,7 +28,8 @@
 
 <div id='map'></div>
 
-<script type="text/javascript" src="http://localhost:8080/maps/dataset/ByOy3EpZipCode/state/Maryland?search=areaType==URBAN"></script>
+<!-- <script type="text/javascript" src="http://localhost:8080/maps/dataset/ByOy3EpZipCode/state/Maryland?search=areaType==URBAN"></script>-->
+<script type="text/javascript" th:src="@{/maps/zipcodes/dataset/ByOy3EpZipCode(search=${filter},state=${state})}"></script>
 
 <script type="text/javascript">
 

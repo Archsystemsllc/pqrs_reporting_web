@@ -82,8 +82,8 @@ public class UIController {
 		return "var data = " + objectMapper.writeValueAsString(ApplicationUtils.getBarChartData(epSummaryData, EPSummary.class));
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/maps/dataset/{dataset}")
-	public String findAllForMapsByRsql(@PathVariable("dataset") String dataset,@RequestParam(value = "search") String search) throws JsonProcessingException {
+	@RequestMapping(method = RequestMethod.GET, value = "/maps/states")
+	public String findAllForMapsByRsql(@RequestParam("dataset") String dataset, @RequestParam(value = "search") String search) throws JsonProcessingException {
 		FeatureCollection featureCollection = new FeatureCollection();
 		if(dataset.equalsIgnoreCase("ByOy3EpState")) {
 			Node rootNode = new RSQLParser().parse(search);
@@ -104,8 +104,8 @@ public class UIController {
 		return "var data = " + objectMapper.writeValueAsString(featureCollection);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/maps/dataset/{dataset}/state/{state}")
-	public String findZipCodesForMapsByRsql(@PathVariable("dataset") String dataset,@RequestParam(value = "search") String search, @PathVariable(value = "state") String state) throws JsonProcessingException {
+	@RequestMapping(method = RequestMethod.GET, value = "/maps/zipcodes/dataset/{dataset}")
+	public String findZipCodesForMapsByRsql(@PathVariable("dataset") String dataset,@RequestParam(value = "search") String search, @RequestParam(value = "state") String state) throws JsonProcessingException {
 		FeatureCollection featureCollection = new FeatureCollection();
 		if(dataset.equalsIgnoreCase("ByOy3EpZipCode") && null!=state) {
 			List<StateZipCodeRef> stateZipCodeRefs = stateZipCodeRefRepository.findByStateName(state);
@@ -137,20 +137,20 @@ public class UIController {
 		return "var data = " + objectMapper.writeValueAsString(featureCollection);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/maps/state/{state}")
-	public String findFeaturesForState(@PathVariable(value = "state") String state) throws JsonProcessingException {
-		FeatureCollection featureCollection = new FeatureCollection();
-		Feature feature = new Feature();
-		Map<String, Object> properties = new HashMap<String, Object>();
-		feature = new Feature();
-		properties = new HashMap<String, Object>();
-		properties.put("NumberOfEPs", 0);
-		properties.put("Area", "State");
-		properties.put("Id", 0);
-		properties.put("State", state);
-		feature.setProperties(properties);
-		feature.setGeometry(readGeoJSONUtil.findGeometryByZipCode(state));
-		featureCollection.add(feature);
-		return "var stateData = " + objectMapper.writeValueAsString(featureCollection);
-	}
+//	@RequestMapping(method = RequestMethod.GET, value = "/maps/state/{state}")
+//	public String findFeaturesForState(@PathVariable(value = "state") String state) throws JsonProcessingException {
+//		FeatureCollection featureCollection = new FeatureCollection();
+//		Feature feature = new Feature();
+//		Map<String, Object> properties = new HashMap<String, Object>();
+//		feature = new Feature();
+//		properties = new HashMap<String, Object>();
+//		properties.put("NumberOfEPs", 0);
+//		properties.put("Area", "State");
+//		properties.put("Id", 0);
+//		properties.put("State", state);
+//		feature.setProperties(properties);
+//		feature.setGeometry(readGeoJSONUtil.findGeometryByZipCode(state));
+//		featureCollection.add(feature);
+//		return "var stateData = " + objectMapper.writeValueAsString(featureCollection);
+//	}
 }
