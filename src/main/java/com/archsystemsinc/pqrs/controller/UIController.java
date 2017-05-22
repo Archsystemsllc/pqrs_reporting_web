@@ -104,8 +104,8 @@ public class UIController {
 		return "var data = " + objectMapper.writeValueAsString(featureCollection);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/maps/zipcodes/dataset/{dataset}")
-	public String findZipCodesForMapsByRsql(@PathVariable("dataset") String dataset,@RequestParam(value = "search") String search, @RequestParam(value = "state") String state) throws JsonProcessingException {
+	@RequestMapping(method = RequestMethod.GET, value = "/maps/zipcodes")
+	public String findZipCodesForMapsByRsql(@RequestParam("dataset") String dataset, @RequestParam(value = "search") String search, @RequestParam(value = "state") String state) throws JsonProcessingException {
 		FeatureCollection featureCollection = new FeatureCollection();
 		if(dataset.equalsIgnoreCase("ByOy3EpZipCode") && null!=state) {
 			List<StateZipCodeRef> stateZipCodeRefs = stateZipCodeRefRepository.findByStateName(state);
@@ -137,20 +137,20 @@ public class UIController {
 		return "var data = " + objectMapper.writeValueAsString(featureCollection);
 	}
 	
-//	@RequestMapping(method = RequestMethod.GET, value = "/maps/state/{state}")
-//	public String findFeaturesForState(@PathVariable(value = "state") String state) throws JsonProcessingException {
-//		FeatureCollection featureCollection = new FeatureCollection();
-//		Feature feature = new Feature();
-//		Map<String, Object> properties = new HashMap<String, Object>();
-//		feature = new Feature();
-//		properties = new HashMap<String, Object>();
-//		properties.put("NumberOfEPs", 0);
-//		properties.put("Area", "State");
-//		properties.put("Id", 0);
-//		properties.put("State", state);
-//		feature.setProperties(properties);
-//		feature.setGeometry(readGeoJSONUtil.findGeometryByZipCode(state));
-//		featureCollection.add(feature);
-//		return "var stateData = " + objectMapper.writeValueAsString(featureCollection);
-//	}
+	@RequestMapping(method = RequestMethod.GET, value = "/maps/feature")
+	public String findFeaturesForState(@RequestParam(value = "state") String state) throws JsonProcessingException {
+		FeatureCollection featureCollection = new FeatureCollection();
+		Feature feature = new Feature();
+		Map<String, Object> properties = new HashMap<String, Object>();
+		feature = new Feature();
+		properties = new HashMap<String, Object>();
+		properties.put("NumberOfEPs", 0);
+		properties.put("Area", "State");
+		properties.put("Id", 0);
+		properties.put("State", state);
+		feature.setProperties(properties);
+		feature.setGeometry(readGeoJSONUtil.findGeometryByZipCode(state));
+		featureCollection.add(feature);
+		return "var stateData = " + objectMapper.writeValueAsString(featureCollection);
+	}
 }
