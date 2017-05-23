@@ -15,4 +15,6 @@ import com.archsystemsinc.pqrs.model.StateZipCodeRef;
  */
 public interface StateZipCodeRefRepository extends CrudRepository<StateZipCodeRef, Integer>{
 	List<StateZipCodeRef> findByStateName(String stateName);
+	
+	List<StateZipCodeRef> findByStateCode(String stateCode);
 }
