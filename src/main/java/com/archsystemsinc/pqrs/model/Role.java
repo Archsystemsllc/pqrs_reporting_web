@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user_role")
-public class Role {
+public class Role { 
     private Long id;
     private String name;
     private Set<User> users;
