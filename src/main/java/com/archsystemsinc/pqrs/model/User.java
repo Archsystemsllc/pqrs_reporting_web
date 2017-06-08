@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     private Long id;
     private String username;
@@ -34,12 +34,12 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) { 
+    public void setPassword(String password) {
         this.password = password;
     }
 
     @Transient
-    public String getPasswordConfirm() { 
+    public String getPasswordConfirm() {
         return passwordConfirm;
     }
 

@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user_role")
-public class Role { 
+@Table(name = "role")
+public class Role {
     private Long id;
     private String name;
     private Set<User> users;
